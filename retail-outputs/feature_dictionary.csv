@@ -1,0 +1,22 @@
+Feature,Definition,Type,Notes
+customer_id,Customer identifier,String,"Key, not a numeric predictor"
+snapshot_date,Date features are calculated,Date,Features use earlier transactions
+recency_days,Days since last purchase,Integer,Lower means more recent activity
+frequency_orders,Distinct historical purchase invoices,Integer,Historical order frequency
+monetary,Sum of historical line totals,Numeric,"Gross value, not profit"
+average_order_value,Monetary divided by invoice count,Numeric,Historical average
+average_basket_quantity,Quantity divided by invoice count,Numeric,Historical average units
+distinct_products,Distinct historical stock codes,Integer,Historical product variety
+tenure_days,First-to-last historical purchase span,Integer,Limited by dataset start
+average_days_between_orders,Mean gap between historical orders,Numeric,Missing for single-order customers
+orders_last_30d,Orders in preceding 30 days,Integer,Snapshot-specific historical feature
+orders_last_90d,Orders in preceding 90 days,Integer,Snapshot-specific historical feature
+orders_last_180d,Orders in preceding 180 days,Integer,Snapshot-specific historical feature
+spend_last_30d,Gross value in preceding 30 days,Numeric,Snapshot-specific historical feature
+spend_last_90d,Gross value in preceding 90 days,Numeric,Snapshot-specific historical feature
+spend_last_180d,Gross value in preceding 180 days,Numeric,Snapshot-specific historical feature
+cancellation_count,Historical cancellation lines,Integer,Not a verified return count
+cancellation_value,Absolute historical cancellation line value,Numeric,"Proxy, not verified return value"
+cancellation_rate,Cancellation invoices / purchase plus cancellation invoices,Numeric,Historical proxy
+country,Most recently observed country,Categorical,Encode inside training pipeline
+lapse,No purchase in following 90 days,Binary,1 = lapse; 0 = at least one purchase
