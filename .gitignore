@@ -1,0 +1,15 @@
+#Local MLflow databases
+mlflow.db
+Notebooks/mlflow.db
+
+#Local MLflow tracking artifacts
+mlruns/
+Notebooks/mlruns/
+
+#Evaluation-only predictions
+customer_lapse_outputs/customer_lapse_predictions_with_labels_for_evaluation_only.csv
+
+#Jupyter temporary files
+.ipynb_checkpoints/
+pycache/
+*.py[cod]

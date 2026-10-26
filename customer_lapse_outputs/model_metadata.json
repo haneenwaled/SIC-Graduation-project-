@@ -1,0 +1,33 @@
+{
+  "selected_model": "MLP Neural Network",
+  "selection_metric": "validation ROC-AUC",
+  "validation_roc_auc": 0.8200870912161444,
+  "risk_threshold": 0.5,
+  "target_definition": "lapse=1 means no purchase in the following 90 days",
+  "features": [
+    "recency_days",
+    "frequency_orders",
+    "monetary",
+    "average_order_value",
+    "average_basket_quantity",
+    "distinct_products",
+    "tenure_days",
+    "average_days_between_orders",
+    "orders_last_30d",
+    "orders_last_90d",
+    "orders_last_180d",
+    "spend_last_30d",
+    "spend_last_90d",
+    "spend_last_180d",
+    "cancellation_count",
+    "cancellation_value",
+    "cancellation_rate",
+    "country"
+  ],
+  "excluded_inputs": [
+    "customer_id",
+    "snapshot_date",
+    "lapse"
+  ],
+  "training_policy": "fit on lapse_train_v1 only; validation for selection; test for final evaluation"
+}
