@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     LAPSE_MODEL_PATH: str = "artifacts/lapse_model/selected_customer_lapse_model.joblib"
     CSV_RECOMMENDATIONS_PATH: str = "artifacts/recommender/product_recommendations_top10.csv"
     RISK_THRESHOLD: float = 0.30
-
+    GEMINI_API_KEY: str = ""
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
