@@ -11,3 +11,4 @@ streamlit
 google-generativeai
 sentence-transformers
 faiss-cpu
+google-genai

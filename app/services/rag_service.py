@@ -1,30 +1,38 @@
-import sys
 import os
+import sys
 
 # Ensure src/ modules are importable
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
-from src.rag_engine import RAGEngine  # Import teammate's engine class
+from src.config import Config
+from src.rag_engine import build_engine, RagEngine
 
 class RAGServiceWrapper:
     def __init__(self):
-        self.engine = None
+        self.engine: RagEngine | None = None
+        self.status = None
 
-    def initialize_engine(self):
+    def _get_engine(self) -> RagEngine:
         if self.engine is None:
-            # Initializes vector store and Gemini client from teammate's code
-            self.engine = RAGEngine()
+            config = Config.from_env()
+            self.engine, self.status = build_engine(config)
+        return self.engine
 
     def query(self, question: str) -> dict:
-        self.initialize_engine()
-        # Call teammate's rag_engine process method
-        result = self.engine.run(question)
-        
+        engine = self._get_engine()
+        ans = engine.answer(question)
+
+        # If LLM failed, display the caught exception message
+        final_answer = ans.text
+        if ans.error:
+            final_answer = f"[LLM ERROR: {ans.error}] {ans.text}"
+
         return {
             "question": question,
-            "answer": result.get("answer", ""),
-            "evidence": result.get("evidence", []),
-            "sources": result.get("sources", [])
+            "answer": final_answer,
+            "citations": ans.citations,
+            "warnings": ans.warnings,
+            "language": ans.language
         }
 
 rag_service = RAGServiceWrapper()

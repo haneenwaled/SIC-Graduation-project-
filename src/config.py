@@ -41,13 +41,12 @@ def _env_int(name: str, default: int) -> int:
     except ValueError:
         return default
 
-
 @dataclass
 class Config:
     data_dir: Path = PROJECT_ROOT / "data"
     cache_dir: Path = PROJECT_ROOT / ".cache" / "index"
     gemini_api_key: str = ""
-    gemini_model: str = "gemini-3.5-flash"
+    gemini_model: str = "gemini-3.8-flash"
     gemini_fallback_models: list[str] = field(default_factory=list)
     temperature: float = 0.2
     max_output_tokens: int = 2048
@@ -65,11 +64,11 @@ class Config:
     @classmethod
     def from_env(cls, env_file: Path | None = None) -> "Config":
         load_dotenv(env_file or PROJECT_ROOT / ".env", override=False)
-        fallbacks = os.getenv("GEMINI_FALLBACK_MODELS", "gemini-3.1-flash-lite,gemini-flash-latest")
+        fallbacks = os.getenv("GEMINI_FALLBACK_MODELS", "gemini-3.6-flash,gemini-3.5-flash-lite")
         return cls(
             gemini_api_key=os.getenv("GEMINI_API_KEY", ""),
-            gemini_model=os.getenv("GEMINI_MODEL", "gemini-3.5-flash"),
-            gemini_fallback_models=[m.strip() for m in fallbacks.split(",") if m.strip()],
+            gemini_model=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
+            gemini_fallback_models=[model.strip() for model in fallbacks.split(",") if model.strip()],
             temperature=_env_float("GEMINI_TEMPERATURE", 0.2),
             max_output_tokens=_env_int("GEMINI_MAX_OUTPUT_TOKENS", 2048),
             embedding_model=os.getenv("EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"),
