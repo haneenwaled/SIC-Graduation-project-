@@ -1,0 +1,8 @@
+streamlit>=1.40
+google-genai>=1.0
+sentence-transformers>=3.0
+faiss-cpu>=1.8
+pandas>=2.0
+numpy>=1.26
+python-dotenv>=1.0
+pytest>=8.0
