@@ -6,10 +6,29 @@ Notebooks/mlflow.db
 mlruns/
 Notebooks/mlruns/
 
+#Environment variables and local secrets
+.env
+.env.*
+!.env.example
+
+#Python environments and caches
+/venv/
+venv/
+.venv/
+env/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+
+#Local databases and logs
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
 #Evaluation-only predictions
 customer_lapse_outputs/customer_lapse_predictions_with_labels_for_evaluation_only.csv
 
 #Jupyter temporary files
 .ipynb_checkpoints/
-pycache/
-*.py[cod]

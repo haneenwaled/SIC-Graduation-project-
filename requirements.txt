@@ -1,0 +1,8 @@
+fastapi[all]==0.104.1
+pydantic
+sqlalchemy
+psycopg2-binary
+pandas
+scikit-learn==1.7.2
+joblib
+pydantic-settings==2.1.0
