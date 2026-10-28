@@ -6,3 +6,8 @@ pandas
 scikit-learn==1.7.2
 joblib
 pydantic-settings==2.1.0
+
+streamlit
+google-generativeai
+sentence-transformers
+faiss-cpu
