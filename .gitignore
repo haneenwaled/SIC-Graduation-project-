@@ -32,3 +32,4 @@ customer_lapse_outputs/customer_lapse_predictions_with_labels_for_evaluation_onl
 
 #Jupyter temporary files
 .ipynb_checkpoints/
+.cache/
