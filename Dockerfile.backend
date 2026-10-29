@@ -20,6 +20,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY app/ ./app/
 COPY src/ ./src/
 COPY data/ ./data/
+COPY artifacts/ ./artifacts/
 
 EXPOSE 8000
 
